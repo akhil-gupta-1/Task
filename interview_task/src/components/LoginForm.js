@@ -13,25 +13,28 @@ export class LoginForm extends Component {
     }
 
     onChange = (e)=>{
-        this.setState({[e.name] : e.value});
+        let error=this.state.error;
+        error[e.name]='';
+        this.setState({[e.name] : e.value, error: error});
 
     }
     validate(){
         let error= {}, isValid=true;;
         if(this.state.loginName.trim() ===''){
-            error.loginNameRequired= 'User name is required';
+            error.loginName= 'User name is required';
             isValid= false;
         }
 
         if(this.state.password.trim() ===''){
-            error.passwordRequired= 'Password is required';
+            error.password= 'Password is required';
             isValid= false;
         }
         this.setState({error: error});
         return isValid;
     }
 
-    onSubmit =() =>{
+    onSubmit =(e) =>{
+        e.preventDefault();
         let isValidated = this.validate();
         if(isValidated){
             this.props.login(this.state.loginName.toLowerCase().trim(), this.state.password);
@@ -46,24 +49,24 @@ export class LoginForm extends Component {
                         id='userid'
                         type='text'
                         className='fieldDetails'
-                        label='User Name'
+                        label='User Name: '
                         value={this.state.loginName}
                         onChange={e => this.onChange({name:'loginName', value:e})}
                     />
                     <p name="errormessage" className="errormessage">
-                        {this.state.error.loginNameRequired}
+                        {this.state.error.loginName}
                     </p>
 
                     <TextField
                         id='password'
-                        //type='password'
+                        type='password'
                         className='fieldDetails'
-                        label='Password'
+                        label='Password: '
                         value={this.state.password}
                         onChange={e => this.onChange({name:'password',value:e})}
                     />
                     <p name="errormessage" className="errormessage">
-                        {this.state.error.passwordRequired}
+                        {this.state.error.password}
                     </p>
                     <Button
                         id="btnSubmit"

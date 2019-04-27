@@ -5,14 +5,25 @@ import { connect } from 'react-redux';
 import './App.css';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
-import { ValidateUser } from './actions/login'
+import { ValidateUser, logoutUser } from './actions/login';
+import {withRouter} from 'react-router';
 
 class App extends Component {
+  state={
+    logoutTrue:false
+  }
   login = (name, password) => {
     this.props.dispatch(
       ValidateUser(name, password)
     )
   }
+
+  logout = () => {
+    this.props.dispatch(
+      logoutUser()
+    )
+  }
+  
   render() {
     if (this.props.session && this.props.session.isAuthenticated) {
       return (
@@ -24,6 +35,9 @@ class App extends Component {
               render={
                 () => 
                   <Dashboard
+                    logout={this.logout.bind(this)}
+                    userName={this.props.session.UserName}
+                    session={this.props.session}
                   />
               }
             />
@@ -56,7 +70,7 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func,
-  session: PropTypes.object,
+  session: PropTypes.object
 }
 
 function mapStateToProps(state) {
@@ -65,4 +79,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

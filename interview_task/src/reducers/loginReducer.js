@@ -31,6 +31,14 @@ const initialState = {
             session:{},
             statusMessage:'login failed'
         });
+        case 'LOGOUT_REQUEST':
+        return Object.assign({}, state, {
+            isAuthenticated: false,
+            successMessage: null,
+            failureMessage: null,
+            session:{},
+            statusMessage:'log out'
+        });
       default:
         return state;
     }

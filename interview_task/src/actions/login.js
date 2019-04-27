@@ -14,6 +14,16 @@ export function ValidateUser(name, password){
     };
 }
 
+export function logoutUser(){
+    return function(dispatch){
+        dispatch(loginOutRequest());
+    };
+}
+
+export function loginOutRequest(){
+    return { type:'LOGOUT_REQUEST'}
+}
+
 export function loginUserRequest(){
     return { type:'LOGIN_REQUEST'}
 }

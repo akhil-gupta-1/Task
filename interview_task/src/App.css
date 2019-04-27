@@ -6,3 +6,20 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.md-text-field-inline-indicator.md-password-btn.md-pointer--hover.md-text-field-inline-indicator--floating.md-text--disabled{
+  display: none;
+}
+
+.md-text-field-inline-indicator.md-password-btn.md-pointer--hover.md-text-field-inline-indicator--floating.md-text--secondary
+{
+  display: none;
+}
+
+.md-divider.md-divider--text-field.md-divider--expand-from-left{
+  display: none
+}
+
+.errormessage{
+  color: red;
+}

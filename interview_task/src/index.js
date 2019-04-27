@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+import { BrowserRouter } from 'react-router-dom'
 import configureStore from './store/configureStore';
 import WebFont from 'webfontloader';
 WebFont.load({ google: { families: ['Material Icons'] } });
@@ -16,7 +17,9 @@ function render(Component) {
   ReactDOM.render(
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <Component />
+        <BrowserRouter>
+          <Component />
+        </BrowserRouter>
       </ConnectedRouter>
     </Provider>,
     document.getElementById('root') || React.createElement('div')
