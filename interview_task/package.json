@@ -1,0 +1,26 @@
+{
+  "name": "interview_task",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.1.1",
+    "react-dom": "^16.8.6",
+    "react-md": "^1.10.1",
+    "react-redux": "^5.0.5",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "0.9.5",
+    "redux": "^4.0.1",
+    "redux-persist": "^4.8.0",
+    "redux-thunk": "^2.3.0",
+    "webfontloader": "^1.6.28"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
